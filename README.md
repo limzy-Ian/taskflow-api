@@ -1,5 +1,7 @@
 Railway - done
-[Live application URL](https://taskflow-api-production-d471.up.railway.app/api/tasks)
+
+![Live application URL](https://taskflow-api-production-d471.up.railway.app/api/tasks)
+
 ![Railway dashboard showing the active deployment](src/screenshots/Railwaydashboard.png)
 
 ![Live application URL response](src/screenshots/applicationURL.png)
@@ -39,7 +41,7 @@ CircleCI -> DockerHub - Done
 
 ![DockerHub](src/screenshots/DockerHub.png)
 
-# GitHub Actions CI/CD but i think i already have circleci configured so cannot have both running simultaneously
+GitHub Actions CI/CD but i think i already have circleci configured so cannot have both running simultaneously
 GitHub Actions -> DockerHub
 
 OPTION 2: ADD A FRONTEND ON NETLIFY
