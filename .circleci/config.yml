@@ -1,0 +1,65 @@
+version: 2.1
+
+  # ==========================================
+  # BUILD JOB - Compile and package
+  # ==========================================
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:21.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - maven-v1-{{ checksum "pom.xml" }}
+            - maven-v1-
+      - run: mvn -B clean package -DskipTests
+      - save_cache:
+          key: maven-v1-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2/repository
+  # ==========================================
+  # TEST JOB - Run automated tests
+  # ==========================================
+  test:
+    docker:
+      - image: cimg/openjdk:21.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - maven-v1-{{ checksum "pom.xml" }}
+            - maven-v1-
+      - run: mvn -B test
+      - store_test_results:
+          path: target/surefire-reports
+      - store_artifacts:
+          path: target/surefire-reports
+  # ==========================================
+  # PUBLISH JOB - Build and push Docker image
+  # ==========================================
+  publish:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker build -t "${DOCKER_USERNAME}/taskflow-api:latest" .
+      - run: |
+          printf '%s' "$DOCKER_TOKEN" | docker login --username "$DOCKER_USERNAME" --password-stdin
+          docker push "${DOCKER_USERNAME}/taskflow-api:latest"
+# ==========================================
+# WORKFLOW - Run jobs in sequence
+# ==========================================
+workflows:
+  build_test_publish:
+    jobs:
+      - build
+      - test:
+          requires: [build]
+      - publish:
+          context: docker-hub
+          requires: [test]
+          filters:
+            branches:
+              only: main
