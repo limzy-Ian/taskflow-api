@@ -1,3 +1,5 @@
-![Live application URL] - https://taskflow-api-production-d471.up.railway.app/api/tasks
-![Railway dashboard with active deployment Screenshot] - (src\screenshot\Railwaydashboard.png)
-![Live application URL working Screenshot] - (src\screenshot\applicationURL.png)
+[Live application URL](https://taskflow-api-production-d471.up.railway.app/api/tasks)
+
+![Railway dashboard showing the active deployment](src/screenshots/Railwaydashboard.png)
+
+![Live application URL response](src/screenshots/applicationURL.png)
