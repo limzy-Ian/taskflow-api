@@ -1,6 +1,6 @@
 Railway - done
-[Live application URL] : (https://taskflow-api-production-d471.up.railway.app/api/tasks)
-![Railway dashboard showing the active deployment] : (src/screenshots/Railwaydashboard.png)
+[Live application URL](https://taskflow-api-production-d471.up.railway.app/api/tasks)
+![Railway dashboard showing the active deployment](src/screenshots/Railwaydashboard.png)
 ![Live application URL response] : (src/screenshots/applicationURL.png)
 
 Stretch Goals (Optional)
@@ -34,8 +34,8 @@ The CI Workflow:
 I will use CircleCI (from Lesson 4.7) and GitHub Actions (from Lesson 4.9) but other popular CI tools include: GitHub Actions, GitLab CI/CD, Jenkins, Azure DevOps
 
 CircleCI -> DockerHub - Done
-![CircleCI] : (src/screenshots/CircleCI.png)
-![DockerHub] : (src/screenshots/DockerHub.png)
+![CircleCI](src/screenshots/CircleCI.png)
+![DockerHub](src/screenshots/DockerHub.png)
 
 # GitHub Actions CI/CD but i think i already have circleci configured so cannot have both running simultaneously
 GitHub Actions -> DockerHub
@@ -50,7 +50,7 @@ Spring Boot
 
 Using GitHub Co-Pilot to guide me as i dont remember much much about Netlifty but i seems to have an account created using lesson.
 
-![Netlity Frontend URL] : https://boisterous-cupcake-3d1b37.netlify.app
+![Netlity Frontend URL](https://boisterous-cupcake-3d1b37.netlify.app)
 
-![Netlity Frontend Screenshot] : (src/screenshots/netlify-frontend.png)
+![Netlity Frontend Screenshot](src/screenshots/netlify-frontend.png)
 
