@@ -41,8 +41,8 @@ CircleCI -> DockerHub - Done
 
 ![DockerHub](src/screenshots/DockerHub.png)
 
-GitHub Actions CI/CD but i think i already have circleci configured so cannot have both running simultaneously
-GitHub Actions -> DockerHub
+GitHub Actions -> DockerHub - Done
+
 
 OPTION 2: ADD A FRONTEND ON NETLIFY
 Create a frontend that uses your TaskFlow API and deploy it to Netlify, with your backend still running
