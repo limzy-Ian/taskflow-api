@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@CrossOrigin(origins = "https://boisterous-cupcake-3d1b37.netlify.app")
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TaskFlow</title>
+  <style>
+    body { font-family: Georgia, serif; background: #f3f6f5; color: #18312c; margin: 0; }
+    main { max-width: 760px; margin: 48px auto; padding: 0 20px; }
+    button { padding: 10px 16px; cursor: pointer; }
+    li { background: white; border-bottom: 1px solid #ccd8d3; padding: 18px; }
+    ul { list-style: none; padding: 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>TaskFlow</h1>
+    <button id="refresh" type="button">Refresh Tasks</button>
+    <p id="status" role="status"></p>
+    <ul id="tasks"></ul>
+  </main>
+  <script>
+    const api = "https://taskflow-api-production-d471.up.railway.app/api/tasks";
+    const status = document.getElementById("status");
+    const list = document.getElementById("tasks");
+    const refresh = document.getElementById("refresh");
+
+    async function loadTasks() {
+      refresh.disabled = true;
+      status.textContent = "Loading...";
+      list.replaceChildren();
+      try {
+        const response = await fetch(api);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const tasks = await response.json();
+        for (const task of tasks) {
+          const item = document.createElement("li");
+          item.textContent = `${task.title} - ${task.completed ? "Completed" : "Pending"}`;
+          list.append(item);
+        }
+        status.textContent = tasks.length ? `${tasks.length} tasks` : "No tasks yet.";
+      } catch (error) {
+        status.textContent = `Could not load tasks: ${error.message}`;
+      } finally {
+        refresh.disabled = false;
+      }
+    }
+    refresh.addEventListener("click", loadTasks);
+    loadTasks();
+  </script>
+</body>
+</html>
