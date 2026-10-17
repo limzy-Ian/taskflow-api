@@ -54,7 +54,7 @@ Spring Boot
 
 Using GitHub Co-Pilot to guide me as i dont remember much much about Netlifty but i seems to have an account created using lesson.
 
-![Netlity Frontend URL](https://boisterous-cupcake-3d1b37.netlify.app)
+![Netlity Frontend URL] https://boisterous-cupcake-3d1b37.netlify.app
 
 ![Netlity Frontend Screenshot](src/screenshots/netlify-frontend.png)
 
