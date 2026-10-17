@@ -1,7 +1,8 @@
 Railway - done
 [Live application URL](https://taskflow-api-production-d471.up.railway.app/api/tasks)
 ![Railway dashboard showing the active deployment](src/screenshots/Railwaydashboard.png)
-![Live application URL response] : (src/screenshots/applicationURL.png)
+
+![Live application URL response](src/screenshots/applicationURL.png)
 
 Stretch Goals (Optional)
 OPTION 1: ADD A CI PIPELINE
@@ -35,6 +36,7 @@ I will use CircleCI (from Lesson 4.7) and GitHub Actions (from Lesson 4.9) but o
 
 CircleCI -> DockerHub - Done
 ![CircleCI](src/screenshots/CircleCI.png)
+
 ![DockerHub](src/screenshots/DockerHub.png)
 
 # GitHub Actions CI/CD but i think i already have circleci configured so cannot have both running simultaneously
