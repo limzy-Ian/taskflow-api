@@ -60,3 +60,20 @@ Using GitHub Co-Pilot to guide me as i dont remember much much about Netlifty bu
 
 ![Netlity Frontend Screenshot](src/screenshots/netlify-frontend.png)
 
+OPTION 3: USE YOUR SIMPLE CRM PROJECTS
+Instead of TaskFlow, containerize and deploy the Simple CRM API backend you built in Module 3 to
+Railway, and deploy the Simple CRM React frontend from Module 2 to Netlify, connected to your Railway
+API.
+• Complete Tasks 1-4 using your Simple CRM API instead of TaskFlow (test your own endpoints instead
+of /api/tasks)
+• If your API uses a database, add a database on Railway and connect it with environment variables (see
+Lesson 4.10)
+• In your README, include both live URLs and screenshots of the frontend showing data from the API
+
+
+OPTION 4: PUBLISH VERSIONED DOCKER IMAGES
+Tag your TaskFlow API images with version numbers instead of only latest, and push them to Docker Hub.
+• Use Semantic Versioning (MAJOR.MINOR.PATCH, e.g. 1.0.0) from Lesson 4.5, and/or the Git commit SHA
+• Push at least two versions, and keep latest pointing at the newest one
+• Bonus: tag the images automatically in a CI pipeline (Option 1)
+• In your README, explain your versioning scheme and include a screenshot of the tags on Docker Hub
