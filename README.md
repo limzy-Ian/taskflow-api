@@ -77,3 +77,7 @@ Tag your TaskFlow API images with version numbers instead of only latest, and pu
 • Push at least two versions, and keep latest pointing at the newest one
 • Bonus: tag the images automatically in a CI pipeline (Option 1)
 • In your README, explain your versioning scheme and include a screenshot of the tags on Docker Hub
+
+![Docker Hub with Semantic Versioning](src/screenshots/DockerHub-SemVer.png)
+
+![CircleCi PI with Semantic Versioning](src/screenshots/CircleCi-SemVer.png)
