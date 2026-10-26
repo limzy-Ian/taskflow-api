@@ -4,7 +4,7 @@ Railway - done
 
 ![Railway dashboard showing the active deployment](src/screenshots/Railwaydashboard.png)
 
-![Live application URL response](src/screenshots/applicationURL.png)
+![Live application URL with test response](src/screenshots/applicationURL.png)
 
 Stretch Goals (Optional)
 OPTION 1: ADD A CI PIPELINE
