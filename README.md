@@ -1,83 +1,65 @@
-Railway - done
+# TaskFlow API
 
-![Live application URL] https://taskflow-api-production-d471.up.railway.app/api/tasks
+A Spring Boot REST API for managing tasks. The API is deployed on Railway, with a frontend hosted on Netlify and Docker images published through CircleCI and GitHub Actions.
+
+## Live Applications
+
+- **API:** [TaskFlow API on Railway](https://taskflow-api-production-d471.up.railway.app/api/tasks)
+- **Frontend:** [TaskFlow on Netlify](https://boisterous-cupcake-3d1b37.netlify.app)
+
+### Railway Deployment
 
 ![Railway dashboard showing the active deployment](src/screenshots/Railwaydashboard.png)
 
-![Live application URL with test response](src/screenshots/applicationURL.png)
+![TaskFlow API response](src/screenshots/applicationURL.png)
 
-Stretch Goals (Optional)
-OPTION 1: ADD A CI PIPELINE
-Add a CI pipeline with GitHub Actions or CircleCI that builds, tests and publishes your TaskFlow API
-image to Docker Hub on every push to main. You will then have two pipelines working side by side: a CI
-pipeline to Docker Hub and a deployment pipeline to Railway.
-• Refer to Lesson 4.7 (CircleCI) or Lesson 4.9 (GitHub Actions)
-• Store your Docker Hub credentials as secrets - never in your code
-• In your README, include a link to a successful pipeline run and your image on Docker Hub
+## API Examples
 
-The CI Workflow:
-1. Developer writes code
-   ↓
-2. Developer commits code to Git
-   ↓
-3. Developer pushes to GitHub
-   ↓
-4. GitHub notifies CI server (CircleCI)
-   ↓
-5. CI server pulls code
-   ↓
-6. CI server builds application
-   ↓
-7. CI server runs automated tests
-   ↓
-8. CI server publishes build artifacts (Docker image)
-   ↓
-9. Developer receives feedback (pass/fail)
+List all tasks:
 
-I will use CircleCI (from Lesson 4.7) and GitHub Actions (from Lesson 4.9) but other popular CI tools include: GitHub Actions, GitLab CI/CD, Jenkins, Azure DevOps
+```bash
+curl 'https://taskflow-api-production-d471.up.railway.app/api/tasks'
+```
 
-CircleCI -> DockerHub - Done
-![CircleCI](src/screenshots/CircleCI.png)
+Create a task:
 
-![DockerHub](src/screenshots/DockerHub.png)
+```bash
+curl -i -X POST 'https://taskflow-api-production-d471.up.railway.app/api/tasks' \
+  -H 'Content-Type: application/json' \
+  -d '{"title":"Test Task","description":"Created with curl","priority":"Low","dueDate":"2026-11-30","completed":false}'
+```
 
-GitHub Actions -> DockerHub - Done
-![GitHub Actions](src/screenshots/GithubActions.png)
+The create endpoint returns `201 Created` and the new task as JSON. The `dueDate` field uses the `YYYY-MM-DD` format.
 
-![DockerHub - GitHub Actions](src/screenshots/GithubActions-DockerHub.png)
+## Continuous Integration
 
-OPTION 2: ADD A FRONTEND ON NETLIFY
-Create a frontend that uses your TaskFlow API and deploy it to Netlify, with your backend still running
-on Railway.
-• The frontend should call your Railway API URL (for example, list your tasks)
-• Your browser will block requests from the Netlify domain until you allow it in your API: look up CORS in
-Spring Boot
-• In your README, include your Netlify URL and a screenshot of the frontend showing data from the API
+CircleCI and GitHub Actions build and publish Docker images to Docker Hub. Railway separately hosts the deployed API.
 
-Using GitHub Co-Pilot to guide me as i dont remember much much about Netlifty but i seems to have an account created using lesson.
+### CircleCI
 
-![Netlity Frontend URL] https://boisterous-cupcake-3d1b37.netlify.app
+![CircleCI pipeline](src/screenshots/CircleCI.png)
 
-![Netlity Frontend Screenshot](src/screenshots/netlify-frontend.png)
+![Docker Hub image published by CircleCI](src/screenshots/DockerHub.png)
 
-OPTION 3: USE YOUR SIMPLE CRM PROJECTS
-Instead of TaskFlow, containerize and deploy the Simple CRM API backend you built in Module 3 to
-Railway, and deploy the Simple CRM React frontend from Module 2 to Netlify, connected to your Railway
-API.
-• Complete Tasks 1-4 using your Simple CRM API instead of TaskFlow (test your own endpoints instead
-of /api/tasks)
-• If your API uses a database, add a database on Railway and connect it with environment variables (see
-Lesson 4.10)
-• In your README, include both live URLs and screenshots of the frontend showing data from the API
+### GitHub Actions
 
+![GitHub Actions workflow](src/screenshots/GithubActions.png)
 
-OPTION 4: PUBLISH VERSIONED DOCKER IMAGES
-Tag your TaskFlow API images with version numbers instead of only latest, and push them to Docker Hub.
-• Use Semantic Versioning (MAJOR.MINOR.PATCH, e.g. 1.0.0) from Lesson 4.5, and/or the Git commit SHA
-• Push at least two versions, and keep latest pointing at the newest one
-• Bonus: tag the images automatically in a CI pipeline (Option 1)
-• In your README, explain your versioning scheme and include a screenshot of the tags on Docker Hub
+![Docker Hub image published by GitHub Actions](src/screenshots/GithubActions-DockerHub.png)
 
-![Docker Hub with Semantic Versioning](src/screenshots/DockerHub-SemVer.png)
+## Frontend
 
-![CircleCi PI with Semantic Versioning](src/screenshots/CircleCi-SemVer.png)
+The Netlify frontend connects to the Railway API.
+
+![TaskFlow frontend deployed on Netlify](src/screenshots/netlify-frontend.png)
+
+## Docker Image Versions
+
+Docker images are tagged with version numbers in addition to `latest`.
+Version tags follow Semantic Versioning (`MAJOR.MINOR.PATCH`), with `latest` pointing to the newest image.
+
+![Docker Hub image tags](src/screenshots/DockerHub-SemVer.png)
+
+![CircleCI workflow publishing versioned images](src/screenshots/CircleCi-SemVer.png)
+
+The screenshots show the published tags and the CircleCI workflow that creates them.
